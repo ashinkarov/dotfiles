@@ -1,0 +1,26 @@
+Xft.autohinting: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintful
+Xft.hinting: 1
+Xft.antialias: 1
+
+Xterm*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-*-u
+
+
+URxvt.background: black
+URxvt.foreground: white
+URxvt.font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-*-u
+URxvt.scrollBar: off
+URxvt.keysym.Control-Up:	\033[1;5A
+URxvt.keysym.Control-Down:	\033[1;5B
+URxvt.keysym.Control-Left:	\033[1;5D
+URxvt.keysym.Control-Right:	\033[1;5C
+URxvt.color4: #3480f0
+URxvt.color12: #5090ff
+URxvt*termName:xterm
+URxvt.keysym.C-1: command:\033]710;-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-u\007
+URxvt.keysym.C-2: command:\033]710;-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-u\007
+URxvt.keysym.C-3: command:\033]710;-*-terminus-bold-*-*-*-14-*-*-*-*-*-*-u\007
+URxvt.keysym.C-4: command:\033]710;-*-terminus-medium-*-*-*-18-*-*-*-*-*-*-u\007
+URxvt.keysym.C-5: command:\033]710;-*-terminus-medium-*-*-*-20-*-*-*-*-*-*-u\007
+URxvt.keysym.C-6: command:\033]710;-*-terminus-medium-*-*-*-22-*-*-*-*-*-*-u\007

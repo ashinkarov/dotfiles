@@ -1,0 +1,31 @@
+background no
+out_to_x no
+out_to_console yes
+update_interval 1
+
+# Network interface must have an ip address to be considered up
+if_up_strictness address
+
+TEXT
+,[{"name": "uptime", "icon":"/home/tema/.i3/xbmicons/mail.xbm", "color": "\#808080", "full_text": " ⇅ ${uptime_short} "},\
+  {"name": "cpu", "color": "\#808080", "full_text": \
+   " ⌘ [${cpu cpu1}%, ${cpu cpu2}%  ${cpu cpu3}%, ${cpu cpu4}%] "},  \
+  {"name": "memory", "color": "\#808080", "full_text": " ⇆ ${memperc}% "},  \
+  {"name": "disk", "color": "\#808080", "full_text": " ☸ ${fs_used_perc /}% "},  \
+  ${if_up wlan0} \
+	{"name":"wifi", "color": "\#339966", "full_text": " ▲ ${addr wlan0} "}, \
+  ${else} ${if_up eth0}\
+	{"name":"eth0", "color": "\#339966", \
+	 "full_text": " ⌁ ${addr eth0} "}, \
+	${else}
+	{"name":"nonet", "color": "\#EE6633", "full_text": " ☠ "}, \
+	${endif}\
+  ${endif}  \
+  {"name": "volume", "color": "\#808080", "full_text": \
+   " ♬ ${exec amixer sget Master | grep Mono: | sed -e 's/[ \t]*Mono: Playback [0-9]* \[\([0-9]*%\)\].*/\1/'} "},  \
+  {"name": "battery", "color": "\#808080", \
+   "full_text": " ϟ ${battery_percent BAT1}% "},  \
+  {"name": "time", "color": "\#CFCFCF", "full_text":  \
+   " ⌚ ${time %d/%m/%y} ${time %H:%M}"}\
+]
+
