@@ -9,6 +9,8 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'w0ng/vim-hybrid'
+" Let's give it a try and see what is it...
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
 
 "let g:notes_directory = '~/.vim/notes'
 let g:notes_suffix = '.txt'
@@ -189,3 +191,6 @@ let g:load_doxygen_syntax=1
 let c_no_curly_error = 1
 let c_gnu=1
 let tex_no_error=1
+" That should hopefully fix lack of highlight when you start
+" with empty *.tex file.
+let g:tex_flavor='latex'
