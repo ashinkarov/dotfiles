@@ -3,3 +3,5 @@
 	name = Artem Shinkarov
 [push]
 	default = matching
+[color]
+	ui = auto
