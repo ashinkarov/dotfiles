@@ -183,4 +183,5 @@ bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 15
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 15
 
-
+# Screen saver with i3lock
+bindsym $mod+x exec "/home/tema/bin/i3lock-wrapper"
