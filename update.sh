@@ -51,6 +51,7 @@ backup_dir=$(mktemp --tmpdir -d config.XXXXXXXXXX)
 backup_done=0
 
 
+
 # Write a note on stderr
 notify() {
     echo "note: $1" > /dev/stderr
@@ -95,7 +96,7 @@ update_links() {
             d=$(dirname "$path")
             # make sure that the directory exists
             if [ ! -e "$d" ]; then
-                mdkir -p "$d" || die "cannot create '$d'"
+                mkdir -p "$d" || die "cannot create '$d'"
             fi
         fi
 
@@ -109,7 +110,7 @@ update_links() {
         else
             # $path is not a link, copy existing thing into the backup
             # and link $path with $HOME/.$file
-            [ -e "$backup_dir" ] || die "failed to create backup directory"
+            [ -e "$backup_dir" ] || die "backup $backup_dir does not exist"
             
             # if config file exists -- backup the file, changing 
             # its name accordingly.
@@ -121,10 +122,10 @@ update_links() {
 
             ln -s "$dir/$file" "$path"
         fi
-
-        # output where is the backup
-        output_backup_dir_to /dev/stdout
     done
+
+    # output where is the backup
+    output_backup_dir_to /dev/stdout
 }
 
 
