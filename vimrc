@@ -11,6 +11,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'w0ng/vim-hybrid'
 " Let's give it a try and see what is it...
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Bundle 'PotatoesMaster/i3-vim-syntax'
 
 let g:notes_directory = '~/.vim/notes'
 let g:notes_suffix = '.txt'
@@ -167,6 +168,10 @@ if has ("autocmd")
 
     " Cut the crap in C files
     autocmd BufWritePre *.\(c\|h\|def\) :%s/\s\+$//e
+    
+    " A syntaxfile for i3 config
+    autocmd BufEnter *i3/config
+            \ setlocal filetype=i3
 
     " Oh yeah, hilight down the CRAP in sac2c source code
     autocmd BufEnter */sac2c/*.c  setlocal expandtab
