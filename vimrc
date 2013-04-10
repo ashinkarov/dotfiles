@@ -12,13 +12,12 @@ Bundle 'w0ng/vim-hybrid'
 " Let's give it a try and see what is it...
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 
-"let g:notes_directory = '~/.vim/notes'
+let g:notes_directory = '~/.vim/notes'
 let g:notes_suffix = '.txt'
-"Bundle 'xolox/vim-notes'
 
 if !(&term =~ '^linux' || &term =~ '^screen')
     " Set 256-color terminal
-    set t_Co=256 
+    set t_Co=256
     Bundle 'Lokaltog/vim-powerline'
 endif
 
@@ -79,30 +78,16 @@ if (&term =~ '^linux' || &term =~'^screen')
     "              | | +-- readonly flag in square brackets
     "              | +-- rodified flag in square brackets
     "              +-- full path to file in the buffer
-    
-    "highlight StatusLine cterm=NONE ctermbg=darkgray ctermfg=darkgreen
-    "let g:Powerline_theme = 'elflord'
-    "let g:Powerline_symbols = 'compatible'
 else
-    "colorscheme delek
     colorscheme solarized
-    "let g:Powerline_theme = 'solarized256'
-    "colorscheme hybrid
-    "execute "highlight StatusLine cterm=NONE ". g:bg_none. " ctermfg=red"
-    "highlight StatusLine cterm=NONE ctermbg=darkgray ctermfg=darkgreen
 endif
-
-"highlight! StatusLine cterm=bold ctermbg=darkgray ctermfg=darkgreen
-"highlight! StatusLineNC cterm=NONE ctermbg=darkgray ctermfg=darkgreen
 
 if has('gui_running')
     let g:Powerline_symbols = 'unicode'
     set background=light
     set guifont=DejaVu\ Sans\ Mono\ 10
 else
-    "let g:Powerline_symbols = 'compatible'
     set background=dark
-    "set background=light
 endif
 
 
@@ -133,24 +118,23 @@ hi SpecialKey ctermfg=239
 imap <F8><F7> <ESC>:set list!<CR><INSERT><RIGHT>
 nmap <F8><F7> <ESC>:set list!<CR>
 
-" Fix key control codes
-" map [31~ <S-F7>
-
 " Spell check
 map <F7> <ESC>:setlocal spell! spelllang=en_gb<CR>
 
+
+" Delete spaces
+imap <LocalLeader>ds <ESC>:%s/\s\+$//e<CR>
+nmap <LocalLeader>ds <ESC>:%s/\s\+$//e<CR>
+
 " Interface
 syn on
-set autoread 
+set autoread
 set number
 set expandtab sw=4 sts=4
 
 filetype on
 
 if has ("autocmd")
-    "filetype plugin indent off
-    "filetype indent off
- 
     " Settings for python
     autocmd BufRead *.py setlocal tabstop=4
     autocmd BufRead *.py setlocal shiftwidth=4
@@ -160,25 +144,35 @@ if has ("autocmd")
     autocmd BufRead *.py setlocal autoindent
     autocmd BufRead *.py setlocal smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
     autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
-  
-    autocmd BufNewFile,BufRead *.md
+
+    " Markdown syntax and settings
+    autocmd BufEnter *.md,*.markdown
             \ setlocal filetype=markdown spell tw=80 wrap
-    autocmd BufNewFile,BufRead *.markdown
-            \ setlocal filetype=markdown spell tw=80 wrap
-    autocmd BufNewFile,BufRead *.sac 
+
+    " SaC syntax
+    autocmd BufEnter *.sac
             \ setlocal filetype=sac
-    autocmd BufEnter ?akefile*  
+
+    " Use tabs and show them in makefil
+    autocmd BufEnter ?akefile*
             \ setlocal noet ts=8 sw=8 nocindent list
+
+    " *.def is a C file (GCC)
     autocmd BufEnter *.def
             \ setlocal syntax=c ts=4 sw=4 sts=4
+
+    " Settings for TeX
     autocmd BufEnter *.tex
             \ setlocal et nocp ts=4 sw=4 sts=4 tw=80 wrap spell
+
+    " Cut the crap in C files
     autocmd BufWritePre *.\(c\|h\|def\) :%s/\s\+$//e
+
+    " Oh yeah, hilight down the CRAP in sac2c source code
     autocmd BufEnter */sac2c/*.c  setlocal expandtab
     autocmd BufEnter */sac2c/*.c  syn keyword sacBullshit DBUG_ENTER
     autocmd BufEnter */sac2c/*.c  syn keyword sacBullshit DBUG_RETURN
     autocmd BufEnter */sac2c/*.c  hi def link sacBullshit Comment
-
 endif
 
 if &term == "tmux" || &term =~ "^xterm" || &term =~ "^(u)?rxvt" || &term =~ '^screen'
@@ -186,7 +180,7 @@ if &term == "tmux" || &term =~ "^xterm" || &term =~ "^(u)?rxvt" || &term =~ '^sc
 endif
 
 set cinoptions+=c1,C1
-set comments=sl:/*,m:\ ,e:*/ 
+set comments=sl:/*,m:\ ,e:*/
 let g:load_doxygen_syntax=1
 let c_no_curly_error = 1
 let c_gnu=1

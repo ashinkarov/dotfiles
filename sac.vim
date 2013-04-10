@@ -1,4 +1,4 @@
-q	" Vim syntax file
+" Vim syntax file
 " Language:	SaC
 " Maintainer:	Artem Shinkarov <artyom.shinkaroff@gmail.com>
 " Last Change:	2010 Dec 01
