@@ -23,4 +23,9 @@ export PATH=$PATH:/sbin:/usr/sbin
 
 export MOZ_DISABLE_PANGO=1
 
-eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib)
+[ -e "${HOME}/perl5" ] && eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib)
+
+if [ "x$(uname -n)" = "xtema-imac" ]; then
+    /usr/bin/keychain ~/.ssh/id_dsa
+    source ~/.keychain/$HOSTNAME-sh > /dev/null
+fi
