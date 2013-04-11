@@ -2,3 +2,4 @@ config.htop    .config/htop
 config.mc      .config/mc
 config.twmn    .config/twmn
 sac.vim        .vim/syntax/sac/syntax.vim
+solarized.vim  .vim/colors/solarized.vim
